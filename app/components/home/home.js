@@ -1,7 +1,7 @@
 /**
- * 
  *
- * @deprecated 
+ *
+ * @deprecated
  * @module components/home
  */
 (function () {
@@ -18,7 +18,7 @@
   }
 
   /**
-  * My method description.  Like other pieces of your comment blocks, 
+  * My method description.  Like other pieces of your comment blocks,
   * this can span multiple lines.
   *
   * @method activate
@@ -30,7 +30,44 @@
   * @return {Boolean} Returns true on success
   */
   HomeController.prototype.activate = function() {
-    console.log('HomeController activate Method');
+    var products = [
+      {id: 'item1', name: 'Item 1', price: 150},
+      {id: 'item2', name: 'Item 2', price: 2324},
+      {id: 'item3', name: 'Item 3', price: 92},
+      {id: 'item4', name: 'Item 4', price: 430}
+    ];
+
+    var calculateTotal = function (list) {
+      var total = 0;
+      for (var key in list) {
+        var item = list[key];
+        total += item.product.price * item.number;
+      }
+      return total;
+    };
+
+    var cart = {
+      items: {},
+      total: function () {
+        return calculateTotal(this.items);
+      },
+      add: function (product) {
+        var item = this.items[product.id] = this.items[product.id] || {
+          product: product,
+          number: 0
+        };
+
+        item.number++;
+      }
+    };
+
+    this.products = products;
+    this.cart = cart;
+  };
+
+  HomeController.prototype.addCart = function (index) {
+    var product = this.products[index];
+    this.cart.add(product);
   };
 
   angular.module('cartsample.home', [])
