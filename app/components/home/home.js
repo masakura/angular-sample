@@ -13,8 +13,8 @@
    * @class HomeController
    * @constructor
    */
-  function HomeController() {
-  	console.log('HomeController Constructor');
+  function HomeController(ProductService) {
+    this._productService = ProductService;
   }
 
   /**
@@ -30,12 +30,7 @@
   * @return {Boolean} Returns true on success
   */
   HomeController.prototype.activate = function() {
-    var products = [
-      {id: 'item1', name: 'Item 1', price: 150},
-      {id: 'item2', name: 'Item 2', price: 2324},
-      {id: 'item3', name: 'Item 3', price: 92},
-      {id: 'item4', name: 'Item 4', price: 430}
-    ];
+    var products = this._productService.query();
 
     var calculateTotal = function (list) {
       var total = 0;
@@ -73,5 +68,5 @@
   angular.module('cartsample.home', [])
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = [];
+  HomeController.$inject = ['ProductService'];
 })();

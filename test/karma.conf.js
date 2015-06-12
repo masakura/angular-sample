@@ -30,12 +30,15 @@ module.exports = function(config) {
       'app/components/contact/contact.js',
       'app/components/home/home.js',
       'app/service/gruntfiles.js',
+      'app/service/product.js',
       'test/components/about/about.spec.js',
       'test/components/contact/contact.spec.js',
       'test/components/home/home.spec.js',
       'test/main.spec.js',
       'test/service/gruntfiles/gruntfiles.mock.js',
       'test/service/gruntfiles/gruntfiles.spec.js',
+      'test/service/product/product.mock.js',
+      'test/service/product/product.spec.js',
       // endinjector
       'app/scripts/main.js',
       'test/main.spec.js'

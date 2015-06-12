@@ -21,6 +21,7 @@
     'cartsample.home',
     'cartsample.about',
     'cartsample.contact',
+    'cartsample.service.product'
     ])
     .config(AppConfig)
     .controller('AppController', AppController);
